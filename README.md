@@ -1,3 +1,9 @@
+<p align="center">
+  <br/>
+  <img src=resources/header.png alt="header">
+  <br/>
+</p>
+
 # K8s cluster with Azure + Terraform
 
 ## Authenticating to Azure using a Service Principal 
@@ -6,7 +12,7 @@
 
 ## Create the Kubernetes cluster
 
-The file [main.tf]([main.tf) contains the definition of the infrastructure for the cluster. Download [Terraform](https://www.terraform.io/) and run the following command:
+The [main.tf](main.tf) file contains the definition of the infrastructure for the cluster. Download [Terraform](https://www.terraform.io/) and run the following command to set it up:
 
 ```bash
 $ terraform init
@@ -30,7 +36,7 @@ terraform apply out.plan
 
 It might take up to ~15 minutes before the cluster is ready.
 
-## Managing the cluster
+## Manage the cluster
 
 Connect to the Kubernetes cluster using [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/):
 
@@ -40,13 +46,13 @@ $ export KUBECONFIG=./azurek8s
 $ kubectl get nodes
 ```
 
-In order to access the dashboard the kubectl proxy command needs to be run which starts a proxy to the Kubernetes API server:
+In order to access the dashboard the `kubectl proxy` command needs to be run which starts a proxy to the Kubernetes API server:
 
 ```bash
 $ kubectl proxy
 ```
 
-The dashboard will be available at [localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/).
+The dashboard will be available at [/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/).
 
 ## Install Helm -- Tiller
 
